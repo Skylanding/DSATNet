@@ -65,14 +65,14 @@ def seed_torch(seed):
 
 seed_torch(seed=123)
 
-from dataset import CrackData
+from util.dataset import CrackData
 print('===> Loading datasets')
 train_path = "/mnt/Disk1/liyu/Work1/dataset/train"
 val_path = "/mnt/Disk1/liyu/Work1/dataset/valid"
 test_path = "/mnt/Disk1/liyu/Work1/dataset/test"
 
 
-### 数据集
+### dataset path
 # train_path = "/mnt/Disk1/liyu/Work1/dataset/train"
 # val_path = "/mnt/Disk1/liyu/Work1/dataset/valid"
 # test_path = "/mnt/Disk1/liyu/Work1/dataset/test"
@@ -90,7 +90,7 @@ test_data = pd.DataFrame({'images': sorted(glob(os.path.join(test_path, "img") +
 combined_data = pd.concat([train_data, test_data]).reset_index(drop=True)
 kfold = KFold(n_splits=5, shuffle=True, random_state=42)
 
-# 释放模型、优化器和调度器
+# release model optimizer and scheduler
 def clear_memory():
     if 'model' in globals():
         del model
@@ -110,7 +110,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(combined_data)):
     # val_dataset = CrackData(df = val_data,transforms=val_transforms)
     # test_dataset = CrackData(df = test_data,transforms=test_transforms)
 
-    # 创建交叉验证的训练和测试子集
+    # cross-validation
     train_subset = combined_data.iloc[train_ids]
     test_subset = combined_data.iloc[test_ids]
 
@@ -132,10 +132,10 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(combined_data)):
     print('===> Building model')
     save_path = check_dirs(ori_dirs="./runs/BUSI_train")
 
-    # vars() 函数返回对象object的属性和属性值的字典对象。
+ 
     with open(save_path+'/1_opt.txt', 'a') as f:
         for arg in vars(opt):
-            f.write('{0}: {1} \n'.format(arg, getattr(opt, arg)))  # getattr() 函数是获取args中arg的属性值
+            f.write('{0}: {1} \n'.format(arg, getattr(opt, arg)))  # getattr()
         f.close()
 
     """
@@ -194,7 +194,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(combined_data)):
             optimizer.zero_grad()
 
             # Get model preditions, calculate loss, backprop
-            batch_img, batch_img2 = scale.scale_input((batch_img, batch_img))   # 指定某个尺度进行训练
+            batch_img, batch_img2 = scale.scale_input((batch_img, batch_img))  
 
             cd_preds= model(batch_img)
 
@@ -241,8 +241,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(combined_data)):
                 batch_img = batch_img.float().to(device)
                 labels = labels.long().to(device)
 
-                batch_img, batch_img2 = scale.scale_input((batch_img, batch_img))   # 指定某个尺度进行训练
-
+                batch_img, batch_img2 = scale.scale_input((batch_img, batch_img))   
                 cd_preds = model(batch_img)
                 cd_preds = scale.scale_output(cd_preds)
 
