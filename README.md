@@ -1,7 +1,7 @@
 # DSATNet
 
 <p align="center">
-  <img src="img/fig_DSAT.png" alt="DSATNet" width="80%">
+  <img src="img/DSAT.png" alt="DSATNet" width="80%">
   <br>
   <rm>Figure 1: DSATNet Architecture</rm>
 </p>
