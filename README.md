@@ -19,15 +19,15 @@
 This is an official implementation of [DSATNet: Dual-Branch Segment Anything Model-Transformer Fusion Network for Accurate Breast Ultrasound Image Segmentation](https://doi.org/10.1002/mp.17751).
 
 ## 🚀 Quick start
-### 1️⃣ Installation
+### ⚙️ Setup
+We ran our experiments with PyTorch 2.0.0, CUDA 11.8, Python 3.8 and Ubuntu 20.04.
+
 Assuming that you have installed PyTorch and TorchVision, if not, please follow the [official instructions](https://pytorch.org/) to install them first.
 Install the dependencies using cmd:
 
 ```bash
-python -m pip install -r requirements.txt --user -q
+pip install -r requirements.txt
 ```
-
-All experiments use the PyTorch 1.8 framework in a Python 3.9 environment.
 
 ### 📂 Installation
 We have evaluated segmentation performance on two datasets, BUSI-WHU and the public BUSI, with ground truth annotated by radiologists. Please prepare the data as follows:
@@ -63,6 +63,8 @@ We have evaluated segmentation performance on two datasets, BUSI-WHU and the pub
     |  |  |- ...
 ```
 
+You can download BUSI-WHU from [here](https://data.mendeley.com/datasets/k6cpmwybk3/1)
+
 Training
 ``` bash
 python train.py
@@ -72,4 +74,16 @@ Evaluation
 python eval.py
 ```
 
+## ✏️ 📄 Citation
+
+If you find our work and dataset useful in your research please consider citing our paper:
+
+```
+@article{lidual,
+  title={Dual branch segment anything model-transformer fusion network for accurate breast ultrasound image segmentation},
+  author={Li, Yu and Huang, Jin and Zhang, Yimin and Deng, Jingwen and Zhang, Jingwen and Dong, Lan and Wang, Du and Mei, Liye and Lei, Cheng},
+  journal={Medical Physics},
+  publisher={Wiley Online Library}
+}
+```
 
