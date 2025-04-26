@@ -65,7 +65,7 @@ We have evaluated segmentation performance on two datasets, BUSI-WHU and the pub
 
 Training
 ``` bash
-python train_BUSI_WHU.py
+python train.py
 ```
 Evaluation
 ``` bash
