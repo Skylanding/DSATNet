@@ -295,7 +295,7 @@ for fold, (train_ids, test_ids) in enumerate(kfold.split(combined_data)):
             gc.collect()
             torch.cuda.empty_cache()
             
-    # 交叉验证折训练和验证结束后
+    # cross fold training and validation completed
     clear_memory()
     
     print('Done!')
