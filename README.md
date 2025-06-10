@@ -20,7 +20,7 @@ This is an official implementation of [DSATNet: Dual-Branch Segment Anything Mod
 
 ## 🚀 Quick start
 ### ⚙️ Setup
-We ran our experiments with PyTorch 2.0.0, CUDA 11.8, Python 3.8 and Ubuntu 20.04.
+We ran our experiments with PyTorch 2.0.0, CUDA 11.8 on Ubuntu 20.04.
 
 Assuming that you have installed PyTorch and TorchVision, if not, please follow the [official instructions](https://pytorch.org/) to install them first.
 Install the dependencies using cmd:
